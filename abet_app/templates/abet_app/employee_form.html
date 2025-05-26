@@ -1,0 +1,12 @@
+{% extends "abet_app/base.html" %}
+{% block content %}
+<h4>{{ action }} Employee</h4>
+<form method="post">
+    {% csrf_token %}
+    <input class="form-control mb-2" type="text" name="name" placeholder="Name" value="{{ employee.name|default_if_none:'' }}">
+    <input class="form-control mb-2" type="email" name="email" placeholder="Email" value="{{ employee.email|default_if_none:'' }}">
+    <input class="form-control mb-2" type="text" name="department" placeholder="Department" value="{{ employee.department|default_if_none:'' }}">
+    <button type="submit" class="btn btn-primary">{{ action }}</button>
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
